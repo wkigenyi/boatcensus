@@ -1,0 +1,26 @@
+{% extends 'boat_census/base.html' %}
+{% load widget_tweaks %}
+{% load bootstrap3 %}
+{% block title %}
+
+    <title>Add Landing Site &gt; {{ district }}</title>
+{% endblock %}
+    
+    
+{% block main %}
+<h1>Add Landing Site &gt; {{ district }}</h1>
+{{ form.non_field_errors }}
+<form action="{% url 'boat_census:add_site' district.id %}" method="POST" class="form">
+    
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        
+        
+        
+        
+
+        {% buttons %}
+        <button name="submit" class="btn btn-primary">Add Landing Site</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

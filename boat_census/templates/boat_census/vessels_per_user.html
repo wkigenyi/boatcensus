@@ -1,0 +1,16 @@
+{% extends 'boat_census/base.html' %}
+{% block content %}
+<p>Vessels for {{ user }}</p>
+<a href="{% url 'boat_census:owners' %}">Vessel Owners</a>
+<ul>
+        {% for vessel in vessels %}
+            <li>{{ vessel }}--
+                <a href="#">Edit</a>--<a href="#">Delete</a>
+            </li>
+            {% empty %}
+            <li>There are no vessels entered yet</li>
+        {% endfor %}
+
+</ul>
+{% endblock content %}
+

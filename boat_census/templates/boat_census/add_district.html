@@ -1,0 +1,15 @@
+{% extends 'boat_census/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    <title>Add District </title>
+{% endblock %}
+{% block main %}
+<h1>Add District</h1>
+<form action="{% url 'boat_census:add_district' %}" method="POST" class="form">
+    
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Add District</button>
+    
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'boat_census/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+<title>Sign in</title>
+{% endblock %}
+{% block main %}
+<div class="messages">
+
+</div>
+
+<div class="row">
+    <div class="col-sm-5">
+            <div class="well">
+                    
+                    <form action="{% url 'users:login' %}" method="POST" class="form">
+                        <legend>Log into your account:</legend>
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% buttons %}
+                        <button name="submit" class="btn btn-primary">Login</button>
+                        {% endbuttons %}
+                        <input type="hidden" name="next" value="{% url 'boat_census:index' %}"/>
+                    </form>
+
+            </div>
+                    
+    </div>
+    <div class="col-sm-7">
+        
+    </div>
+</div>
+
+
+
+{% endblock %}
+

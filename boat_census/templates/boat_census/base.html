@@ -1,0 +1,92 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'boat_census/custom.css' %}"/>
+        <link rel="stylesheet" href="{% static 'boat_census/admin.css' %}"/>
+        {% bootstrap_javascript %}
+
+        {% block title %}
+        <title>Boat Census</title>
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+                <div class="navbar navbar-default navbar-static-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header col-md-3 col-lg-2">
+                                <a class="navbar-brand" href="{% url 'boat_census:index' %}">Boat Census</a>
+                                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".collapse">
+                                    <span class="sr-only">Toggle Navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url 'boat_census:districts' %}">Districts</a></li>
+                                        <li class="dropdown">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" type="button" role="button" aria-expanded="false"> Parameters </a>
+                                                <ul class="dropdown-menu user" role="menu">
+                                                        <li><a href="{% url 'boat_census:boat_types' %}">Boat Types</a></li>
+                                                        <li><a href="{% url 'boat_census:boat_classes' %}">Boat Classes</a></li>
+                                                        <li><a href="{% url 'boat_census:boat_classes' %}">Boat Uses</a></li>
+                                                        <li><a href="{% url 'boat_census:fuel_types' %}">Fuel Types</a></li>
+                                                        <li><a href="{% url 'boat_census:propulsion_types' %}">Propulsion Types</a></li>
+                                                        <li><a href="{% url 'boat_census:propulsion_types' %}">Colors</a></li>
+                                                </ul>
+                                        </li>
+                                           
+                                        <li><a href="{% url 'boat_census:owners' %}">Owners</a></li>
+                                        <li><a href="{% url 'boat_census:vessels' %}">All Vessels</a></li>
+                                        <li><a href="{% url 'boat_census:vessels_per_user' user.id  %}">My Vessels</a></li>
+            
+            
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" type="button" role="button" aria-expanded="false">Howdy, {{user.username}} </a>
+                                            <ul class="dropdown-menu user" role="menu">
+                                                <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                                            </ul>
+                                        
+                                        {% else %}
+                                        <li>
+                                            <a href="{% url 'users:login' %}">Login</a>
+                                        </li>
+                                        {% endif %}
+                                    <li></li>
+                                </ul>
+            
+                            </div>
+                        </div>
+                    </div>
+        </header>
+        
+        <div class="container container-body">
+            <div class="row">
+                <div class="col-sm-9" id="main">
+                        {% block main %}
+                        {% endblock main %}
+
+                </div>
+                <div class="col-sm-3" id="sidebar">
+                        {% block sidebar %}
+                        {% endblock sidebar %}
+
+                </div>
+                
+            </div>
+        </div>
+            
+            
+                        
+
+    </body>
+</html>

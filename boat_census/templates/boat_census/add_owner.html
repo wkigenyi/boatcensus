@@ -1,0 +1,77 @@
+{% extends 'boat_census/base.html' %}
+{% load widget_tweaks %}
+{% load bootstrap3 %}
+{% block title %}
+<title>Add Owner</title>
+{% endblock %}
+{% block main %}
+    <h1>Add Owner</h1>
+    {{ form.non_field_errors }}
+    <form action="{% url 'boat_census:add_owner' %}" method="POST" class="form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Identity Info</legend>
+            <section class="row">
+                <div class="form-group col-sm-4">
+                    {{ form.name.label_tag }}
+                    {{ form.name.errors }}
+                    {% render_field form.name class="form-control" %}
+                    {{ form.name.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.national_id.label_tag }}
+                    {{ form.national_id.errors }}
+                    {% render_field form.national_id class="form-control" %}
+                    {{ form.national_id.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.driver_license.label_tag }}
+                    {{ form.driver_license.errors }}
+                    {% render_field form.driver_license class="form-control" %}
+                    {{ form.driver_license.help_text }}
+                </div>
+            </section>    
+        </fieldset>
+        <fieldset>
+            <legend>Contact</legend>
+            <section class="row">
+                <div class="form-group col-sm-4">
+                    {{ form.tel1.label_tag }}
+                    {{ form.tel1.errors }}
+                    {% render_field form.tel1 class="form-control" %}
+                    {{ form.tel1.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.tel2.label_tag }}
+                    {{ form.tel2.errors }}
+                    {% render_field form.tel2 class="form-control" %}
+                    {{ form.tel2.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.tel3.label_tag }}
+                    {{ form.tel3.errors }}
+                    {% render_field form.tel3 class="form-control" %}
+                    {{ form.tel3.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.tel4.label_tag }}
+                    {{ form.tel4.errors }}
+                    {% render_field form.tel4 class="form-control" %}
+                    {{ form.tel4.help_text }}
+                </div>
+            </section>    
+        </fieldset>
+        
+            
+        
+        
+        
+        {% buttons %}
+        <button name="submit" class="btn btn-primary ">Add Owner</button>
+        {% endbuttons %}
+    
+    </form>
+{% endblock %}
+{% block content %}
+
+{% endblock content %}

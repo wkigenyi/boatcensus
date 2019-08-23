@@ -1,0 +1,13 @@
+{% extends 'boat_census/base.html' %}
+{% block content %}
+<p>Boat Types</p>
+<a href="{% url 'boat_census:add_boat_type' %}">Add Boat Type</a>
+<ul>
+        {% for boat_type in boat_types %}
+            <li>{{ boat_type }}</li>
+            {% empty %}
+            <li>There are no boat types entered yet</li>
+        {% endfor %}
+
+</ul>
+{% endblock content %}

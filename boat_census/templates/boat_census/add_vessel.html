@@ -1,0 +1,184 @@
+{% extends 'boat_census/base.html' %}
+{% load widget_tweaks %}
+{% load bootstrap3 %}
+{% block title %}
+
+    <title>Add Vessel &gt; {{ owner }}</title>
+{% endblock %}
+    
+    
+{% block main %}
+<h1>Add Vessel &gt; {{ owner }}</h1>
+{{ form.non_field_errors }}
+<form action="{% url 'boat_census:add_vessel' owner.id %}" method="POST" class="form">
+    
+        {% csrf_token %}
+        
+        
+        <fieldset>
+            <legend>Identification Details</legend>
+            <section class="row">
+                <div class="form-group col-sm-4">
+                    {{ form.vessel_name.label_tag }}
+                    {{ form.vessel_name.errors }}
+                    {% render_field form.vessel_name class="form-control" %}
+                    {{ form.vessel_name.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.vessel_number.label_tag }}
+                    {{ form.vessel_number.errors }}
+                    {% render_field form.vessel_number class="form-control" %}
+                    {{ form.vessel_number.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.landing_site.label_tag }}
+                    {{ form.landing_site.errors }}
+                    {% render_field form.landing_site class="form-control" %}
+                    {{ form.landing_site.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.hull_id.label_tag }}
+                    {{ form.hull_id.errors }}
+                    {% render_field form.hull_id class="form-control" %}
+                    {{ form.hull_id.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                        {{ form.hull_color.label_tag }}
+                        {{ form.hull_color.errors }}
+                        {% render_field form.hull_color class="form-control" %}
+                        {{ form.hull_color.help_text }}
+                    </div>
+                    <div class="form-group col-sm-4">
+                            {{ form.cabin_color.label_tag }}
+                            {{ form.cabin_color.errors }}
+                            {% render_field form.cabin_color class="form-control" %}
+                            {{ form.cabin_color.help_text }}
+                        </div>
+            </section>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Capacity</legend>
+            <section class="row">
+                    <div class="form-group col-sm-4">
+                            {{ form.boat_use.label_tag }}
+                            {{ form.boat_use.errors }}
+                            {% render_field form.boat_use class="form-control" %}
+                            {{ form.boat_use.help_text }}
+                        </div>
+                <div class="form-group col-sm-4">
+                    {{ form.passenger_capacity.label_tag }}
+                    {{ form.passenger_capacity.errors }}
+                    {% render_field form.passenger_capacity class="form-control" %}
+                    {{ form.passenger_capacity.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.cargo_capacity.label_tag }}
+                    {{ form.cargo_capacity.errors }}
+                    {% render_field form.cargo_capacity class="form-control" %}
+                    {{ form.cargo_capacity.help_text }}
+                </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <legend>Life Saving Gadgets</legend>
+            <section class="row">
+                <div class="form-group col-sm-4">
+                    {{ form.boat_type.label_tag }}
+                    {{ form.boat_type.errors }}
+                    {% render_field form.boat_type class="form-control" %}
+                    {{ form.boat_type.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.life_jackets.label_tag }}
+                    {{ form.life_jackets.errors }}
+                    {% render_field form.life_jackets class="form-control" %}
+                    {{ form.passenger_capacity.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.life_rings.label_tag }}
+                    {{ form.life_rings.errors }}
+                    {% render_field form.life_rings class="form-control" %}
+                    {{ form.life_rings.help_text }}
+                </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <legend>Measurements</legend>
+            <section class="row">
+                    <div class="form-group col-sm-4">
+                            {{ form.length.label_tag }}
+                            {{ form.length.errors }}
+                            {% render_field form.length class="form-control" %}
+                            {{ form.length.help_text }}
+                    </div>
+                <div class="form-group col-sm-4">
+                    {{ form.width.label_tag }}
+                    {{ form.width.errors }}
+                    {% render_field form.width class="form-control" %}
+                    {{ form.width.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                    {{ form.hull_material.label_tag }}
+                    {{ form.hull_material.errors }}
+                    {% render_field form.hull_material class="form-control" %}
+                    {{ form.hull_material.help_text }}
+                </div>
+                <div class="form-group col-sm-4">
+                        {{ form.year_of_build.label_tag }}
+                        {{ form.year_of_build.errors }}
+                        {% render_field form.year_of_build class="form-control" %}
+                        {{ form.year_of_build.help_text }}
+                    </div>
+                
+            </section>
+        </fieldset>
+        <fieldset>
+            <legend>Power</legend>
+            <section class="row">
+                    <div class="form-group col-sm-4">
+                            {{ form.boat_class.label_tag }}
+                            {{ form.boat_class.errors }}
+                            {% render_field form.boat_class class="form-control" %}
+                            {{ form.boat_class.help_text }}
+                        </div>
+                        <div class="form-group col-sm-4">
+                                {{ form.fuel_type.label_tag }}
+                                {{ form.fuel_type.errors }}
+                                {% render_field form.fuel_type class="form-control" %}
+                                {{ form.fuel_type.help_text }}
+                            </div>
+                            <div class="form-group col-sm-4">
+                                    {{ form.propulsion.label_tag }}
+                                    {{ form.propulsion.errors }}
+                                    {% render_field form.propulsion class="form-control" %}
+                                    {{ form.propulsion.help_text }}
+                                </div>
+            </section>
+        </fieldset>
+            <fieldset>
+                    <legend>Other</legend>
+                    <section class="row">
+                            
+                                <div class="form-group col-sm-4">
+                                        {{ form.enumerator.label_tag }}
+                                        {{ form.enumerator.errors }}
+                                        {% render_field form.enumerator class="form-control" %}
+                                        {{ form.enumerator.help_text }}
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                            {{ form.census_date.label_tag }}
+                                            {{ form.census_date.errors }}
+                                            {% render_field form.census_date class="form-control" %}
+                                            {{ form.census_date.help_text }}
+                                        </div>
+                    </section>
+                </fieldset>
+        
+        
+
+        {% buttons %}
+        <button name="submit" class="btn btn-primary">Add Vessel</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

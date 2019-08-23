@@ -1,0 +1,51 @@
+{% extends 'boat_census/base.html' %}
+{% block title %}
+    <title>
+            Sites &gt; {{ district }}
+    </title>
+{% endblock %}
+    
+{% block main %}
+    <h1>Landing Sites &gt; {{ district }}</h1>
+    
+        {% if sites %}
+        <table class="table table-striped table-middle-aligned">
+            <thead>
+                <tr>
+                    <th scope="col">Landing Site</th>
+                    <th class="text-center" scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for site in sites %}
+                <tr>
+                    <td>{{ site.site_name }}</td>
+                    <td class="text-center">
+                        <div class="action-items">
+                            <a class="btn btn-sm btn-primary">Edit</a>
+                            <a class="btn btn-sm btn-warning">Statistics</a>
+                            <a class="btn btn-sm btn-default">Report</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>There are no sites entered yet</p>
+        {% endif %}
+            
+    
+    
+{% endblock %}
+{% block sidebar %}
+    <div class="section actions">
+            <a class="btn btn-lg btn-block btn-success" href="{% url 'boat_census:add_site' district.id %}">Add Landing Site</a>
+    </div>
+{% endblock %}
+
+
+
+
+
+
