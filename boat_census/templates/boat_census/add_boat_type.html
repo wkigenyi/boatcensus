@@ -1,11 +1,15 @@
 {% extends 'boat_census/base.html' %}
-{% block content %}
-<p>Add Boat Type</p>
-<form action="{% url 'boat_census:add_boat_type' %}" method="POST">
+{% load bootstrap3 %}
+{% block title %}
+    <title>Add Boat Type </title>
+{% endblock %}
+{% block main %}
+<h1>Add Boat Type</h1>
+<form action="{% url 'boat_census:add_boat_type' %}" method="POST" class="form">
     
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Add Boat Type</button>
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Add Boat Type</button>
     
 </form>
-{% endblock content %}
+{% endblock %}
