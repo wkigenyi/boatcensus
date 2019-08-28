@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Owner,District,BoatType,BoatUse,BoatClass,FuelType,Propulsion,Vessel,LandingSite
+from .models import Owner,District,BoatType,BoatUse,BoatClass,FuelType,Propulsion,Vessel,LandingSite,BoatClass,Color
 
 class OwnerForm(forms.ModelForm):
     #Enable Users to add owners
@@ -53,5 +53,21 @@ class LandingSiteForm(forms.ModelForm):
     class Meta:
         model = LandingSite
         exclude = ['district']
+class BoatClassForm(forms.ModelForm):
+    #Enable Addition Of Classes
+    class Meta:
+        model = BoatClass
+        fields = ['boat_class']
+class BoatUseForm(forms.ModelForm):
+    #Enable Addition Of Boat Uses
+    class Meta:
+        model = BoatUse
+        fields = ['boat_use']
+
+class ColorForm(forms.ModelForm):
+    #Enable Addition Of Color
+    class Meta:
+        model = Color
+        fields = ['color']
         
         

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
-from .models import Owner,District,BoatType,Vessel,LandingSite
-from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm
+from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType
+from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm
 from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
@@ -55,6 +55,21 @@ def boat_type(request):
     context = {'boat_types':boat_types}
     return render(request,'boat_census/boat_types.html',context)
 
+def boat_classes(request):
+    #Show boat classes in the Database
+    boat_classes = BoatClass.objects.all()
+    context = {'boat_classes':boat_classes}
+    return render(request,'boat_census/boat_classes.html',context)
+def boat_uses(request):
+    #Show boat uses in the Database
+    boat_uses = BoatUse.objects.all()
+    context = {'boat_uses':boat_uses}
+    return render(request,'boat_census/boat_uses.html',context)
+def fuel_types(request):
+    #Show boat uses in the Database
+    fuel_types = FuelType.objects.all()
+    context = {'fuel_types':fuel_types}
+    return render(request,'boat_census/fuel_types.html',context)
 def add_boat_type(request):
     #Enable Users to add boat types
     if request.method != 'POST':
@@ -68,6 +83,46 @@ def add_boat_type(request):
             return HttpResponseRedirect(reverse('boat_census:boat_types'))
     context = {'form':form}
     return render(request,'boat_census/add_boat_type.html',context)
+def add_boat_class(request):
+    #Enable Users to add boat classes
+    if request.method != 'POST':
+        #Form has not been submitted, present a new form
+        form = BoatClassForm()
+    else:
+        #Form has been submitted, process data
+        form = BoatClassForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:boat_classes'))
+    context = {'form':form}
+    return render(request,'boat_census/add_boat_class.html',context)
+def add_boat_use(request):
+    #Enable Users to add boat uses
+    if request.method != 'POST':
+        #Form has not been submitted, present a new form
+        form = BoatUseForm()
+    else:
+        #Form has been submitted, process data
+        form = BoatUseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:boat_uses'))
+    context = {'form':form}
+    return render(request,'boat_census/add_boat_use.html',context)
+
+def add_fuel_type(request):
+    #Enable Users to add fuel types
+    if request.method != 'POST':
+        #Form has not been submitted, present a new form
+        form = FuelTypeForm()
+    else:
+        #Form has been submitted, process data
+        form = FuelTypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:fuel_types'))
+    context = {'form':form}
+    return render(request,'boat_census/add_fuel_type.html',context)
 
 def vessels_per_owner(request,owner_id):
     owner = Owner.objects.get(id=owner_id)

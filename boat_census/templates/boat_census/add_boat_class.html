@@ -1,0 +1,15 @@
+{% extends 'boat_census/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    <title>Add Boat Class </title>
+{% endblock %}
+{% block main %}
+<h1>Add Boat Class</h1>
+<form action="{% url 'boat_census:add_boat_class' %}" method="POST" class="form">
+    
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Add Boat Class</button>
+    
+</form>
+{% endblock %}

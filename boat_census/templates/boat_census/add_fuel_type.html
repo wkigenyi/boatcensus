@@ -1,0 +1,15 @@
+{% extends 'boat_census/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    <title>Add Fuel Type </title>
+{% endblock %}
+{% block main %}
+<h1>Add Fuel Type</h1>
+<form action="{% url 'boat_census:add_fuel_type' %}" method="POST" class="form">
+    
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Add Fuel Type</button>
+    
+</form>
+{% endblock %}
