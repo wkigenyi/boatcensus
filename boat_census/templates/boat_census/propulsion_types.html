@@ -1,0 +1,39 @@
+{% extends 'boat_census/base.html' %}
+{% block title %}
+<title>Propulsion Types </title>
+{% endblock %}
+{% block main %}
+<h1>Propulsion Types</h1>
+
+{% if prop_types%}
+    <table class="table table-striped table-middle-aligned">
+        <thead>
+            <tr>
+                <th scope="col">Propulsion</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prop in prop_types %}
+                <tr>
+                    <td>{{prop.prop_name}}</td>
+                    <td class="text-center">
+                        <div class="action-items">
+                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No Propulsions entered yet</p>
+{% endif %}
+
+{% endblock %}
+{% block sidebar %}
+<div class="section actions">
+    <a href="{% url 'boat_census:add_prop_type' %}" class="btn btn-block btn-lg btn-success">Add Propulsion Type</a>
+</div>
+{% endblock %}

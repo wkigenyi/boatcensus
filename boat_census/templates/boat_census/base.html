@@ -40,8 +40,8 @@
                                                         <li><a href="{% url 'boat_census:boat_classes' %}">Boat Classes</a></li>
                                                         <li><a href="{% url 'boat_census:boat_uses' %}">Boat Uses</a></li>
                                                         <li><a href="{% url 'boat_census:fuel_types' %}">Fuel Types</a></li>
-                                                        <li><a href="{% url 'boat_census:propulsion_types' %}">Propulsion Types</a></li>
-                                                        <li><a href="{% url 'boat_census:propulsion_types' %}">Colors</a></li>
+                                                        <li><a href="{% url 'boat_census:prop_types' %}">Propulsion Types</a></li>
+                                                        <li><a href="{% url 'boat_census:prop_types' %}">Colors</a></li>
                                                 </ul>
                                         </li>
                                            
@@ -78,6 +78,14 @@
                 </div>
                 <div class="col-sm-3" id="sidebar">
                         {% block sidebar %}
+                        <div class="section about">
+                            <div class="well well-lg">
+                                
+                                <p>
+                                    The boat census is a tool for collecting information about water vessels that are operating on the lakes of Uganda
+                                </p>
+                            </div>
+                        </div>
                         {% endblock sidebar %}
 
                 </div>
