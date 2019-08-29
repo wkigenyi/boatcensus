@@ -1,0 +1,15 @@
+{% extends 'boat_census/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    <title>Add Material </title>
+{% endblock %}
+{% block main %}
+<h1>Add Hull Material</h1>
+<form action="{% url 'boat_census:add_hull_material' %}" method="POST" class="form">
+    
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button name="submit" class="btn btn-primary">Add Material </button>
+    
+</form>
+{% endblock %}

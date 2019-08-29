@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
-from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion,Color,Enumerator
-from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm,EnumeratorForm
+from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion,Color,Enumerator,HullMaterial
+from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm,EnumeratorForm,HullForm
 from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
@@ -19,7 +19,11 @@ def enumerators(request):
     enumerators = Enumerator.objects.all()
     context = {'enumerators':enumerators}
     return render(request,'boat_census/enumerators.html',context)
-
+def hull_material(request):
+    #For viewing the owners
+    materials = HullMaterial.objects.all()
+    context = {'materials':materials}
+    return render(request,'boat_census/materials.html',context)
 def add_owner(request):
     #Enable users to add owners
     if request.method != 'POST':
@@ -33,6 +37,19 @@ def add_owner(request):
             return HttpResponseRedirect(reverse('boat_census:owners'))
     context = {'form':form}
     return render(request,'boat_census/add_owner.html',context)
+def add_hull_material(request):
+    #Enable users to add material
+    if request.method != 'POST':
+        #Data has not been entered, present a new from
+        form = HullForm()
+    else:
+        #Data has been submitted
+        form = HullForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:hull_material'))
+    context = {'form':form}
+    return render(request,'boat_census/add_hull_material.html',context)
 def add_enumerator(request):
     #Enable users to add enumerators
     if request.method != 'POST':
