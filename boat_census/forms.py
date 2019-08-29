@@ -68,6 +68,7 @@ class ColorForm(forms.ModelForm):
     #Enable Addition Of Color
     class Meta:
         model = Color
-        fields = ['color']
+        fields = '__all__'
+        widgets= {'color_code':forms.TextInput(attrs={'type':'color'})}
         
         

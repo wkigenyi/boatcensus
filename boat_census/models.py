@@ -37,9 +37,10 @@ class HullMaterial(models.Model):
         return self.hull_material
 
 class Color (models.Model):
-    color = models.CharField(max_length=200)
+    color_name = models.CharField(max_length=200)
+    color_code = models.CharField(max_length=7)
     def __str__(self):
-        return self.color
+        return self.color_name
 
 class BoatType (models.Model):
     boat_type = models.CharField(max_length=200)

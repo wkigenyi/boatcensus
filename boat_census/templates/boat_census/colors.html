@@ -1,0 +1,41 @@
+{% extends 'boat_census/base.html' %}
+{% block title %}
+<title>Colors </title>
+{% endblock %}
+{% block main %}
+<h1>Colors</h1>
+
+{% if colors%}
+    <table class="table table-striped table-middle-aligned">
+        <thead>
+            <tr>
+                <th scope="col">Color</th>
+                <th scope="col">Color Code</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for color in colors %}
+                <tr>
+                    <td>{{color.color_name}}</td>
+                    <td>{{color.color_code}}</td>
+                    <td class="text-center">
+                        <div class="action-items">
+                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No Boat Colors entered yet</p>
+{% endif %}
+
+{% endblock %}
+{% block sidebar %}
+<div class="section actions">
+    <a href="{% url 'boat_census:add_color' %}" class="btn btn-block btn-lg btn-success">Add Color</a>
+</div>
+{% endblock %}

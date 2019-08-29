@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
-from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion
+from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion,Color
 from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm
 from django.contrib.auth.models import User
 # Create your views here.
@@ -70,6 +70,11 @@ def fuel_types(request):
     fuel_types = FuelType.objects.all()
     context = {'fuel_types':fuel_types}
     return render(request,'boat_census/fuel_types.html',context)
+def colors(request):
+    #Show colors in the Database
+    colors = Color.objects.all()
+    context = {'colors':colors}
+    return render(request,'boat_census/colors.html',context)
 def prop_types(request):
     #Show propulsion types in the Database
     prop_types = Propulsion.objects.all()
@@ -101,6 +106,19 @@ def add_boat_type(request):
             return HttpResponseRedirect(reverse('boat_census:boat_types'))
     context = {'form':form}
     return render(request,'boat_census/add_boat_type.html',context)
+def add_color(request):
+    #Enable Users to add boat types
+    if request.method != 'POST':
+        #Form has not been submitted, present a new form
+        form = ColorForm()
+    else:
+        #Form has been submitted, process data
+        form = ColorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:colors'))
+    context = {'form':form}
+    return render(request,'boat_census/add_color.html',context)
 def add_boat_class(request):
     #Enable Users to add boat classes
     if request.method != 'POST':
