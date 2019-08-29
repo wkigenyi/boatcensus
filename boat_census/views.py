@@ -207,6 +207,11 @@ def vessels_per_user(request,user_id):
     context = {'vessels':vessels,'user':user}
     return render(request,'boat_census/vessels_per_user.html',context)
 
+def vessels(request):
+    vessels = Vessel.objects.all()
+    context = {'vessels':vessels}
+    return render(request,'boat_census/vessels.html',context)
+
 def sites_per_district(request,district_id):
     district = District.objects.get(id=district_id)
     sites = LandingSite.objects.filter(district=district)

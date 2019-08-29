@@ -1,12 +1,12 @@
 {% extends 'boat_census/base.html' %}
 {% block title %}
     <title>
-            Vessels &gt; {{ user }}
+            All Vessels
     </title>
 {% endblock %}
     
 {% block main %}
-    <h1>Vessels &gt; {{ user }}</h1>
+    <h1>All Vessels</h1>
     
         {% if vessels %}
         <table class="table table-striped table-middle-aligned">
@@ -41,7 +41,7 @@
             </tbody>
         </table>
         {% else %}
-            <p><i>You have not entered any vessels yet</i></p>
+            <p><i>There are no vessels yet</i></p>
             
         {% endif %}
             

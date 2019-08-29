@@ -7,6 +7,12 @@ class OwnerForm(forms.ModelForm):
         model = Owner
         fields = ['name','national_id','driver_license','tel1','tel2','tel3','tel4']
         labels = {'name':'Owner Name'}
+        widgets = {
+            'tel1':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}','placeholder':'0712345678'}),
+            'tel2':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}','placeholder':'0712345678'}),
+            'tel3':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}','placeholder':'0712345678'}),
+            'tel4':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}','placeholder':'0712345678'}),
+            }
 
 class DistrictForm(forms.ModelForm):
     #Enable Addition Of Districts
@@ -80,6 +86,9 @@ class EnumeratorForm(forms.ModelForm):
     class Meta:
         model = Enumerator    
         fields = '__all__'
-        widgets = {'tel1':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'}),'tel2':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'})}
+        widgets = {
+            'tel1':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'}),
+            'tel2':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'}),
+            'date_of_birth':forms.TextInput(attrs={'type':'date'})}
         
         
