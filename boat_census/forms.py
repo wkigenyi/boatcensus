@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Owner,District,BoatType,BoatUse,BoatClass,FuelType,Propulsion,Vessel,LandingSite,BoatClass,Color
+from .models import Owner,District,BoatType,BoatUse,BoatClass,FuelType,Propulsion,Vessel,LandingSite,BoatClass,Color,Enumerator
 
 class OwnerForm(forms.ModelForm):
     #Enable Users to add owners
@@ -70,5 +70,11 @@ class ColorForm(forms.ModelForm):
         model = Color
         fields = '__all__'
         widgets= {'color_code':forms.TextInput(attrs={'type':'color'})}
+class EnumeratorForm(forms.ModelForm):
+    #Enable Addition Of Enumerators
+    class Meta:
+        model = Enumerator    
+        fields = '__all__'
+        widgets = {'tel1':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'}),'tel2':forms.TextInput(attrs={'type':'tel','pattern':'[0-9]{10}'})}
         
         

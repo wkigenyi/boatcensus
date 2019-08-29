@@ -72,9 +72,9 @@ class Owner(models.Model):
 class Enumerator(models.Model):
     surname_name = models.CharField(max_length=200)
     other_name = models.CharField(max_length=200)
-    tel1 = models.CharField(max_length=200)
-    tel2 = models.CharField(max_length=200)
-    email_address = models.CharField(max_length=200)
+    tel1 = models.CharField(max_length=200,help_text='Format:0712345678')
+    tel2 = models.CharField(max_length=200,help_text='Format:0712345678')
+    email_address = models.EmailField(max_length=200)
     date_of_birth = models.DateField()
 
     def __str__(self):

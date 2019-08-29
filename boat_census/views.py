@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
-from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion,Color
-from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm
+from .models import Owner,District,BoatType,Vessel,LandingSite,BoatClass,BoatUse,FuelType,Propulsion,Color,Enumerator
+from .forms import OwnerForm,DistrictForm,BoatTypeForm,VesselForm,LandingSiteForm,BoatClassForm,BoatUseForm,PropulsionForm,ColorForm,FuelTypeForm,EnumeratorForm
 from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
@@ -14,6 +14,11 @@ def owners_view(request):
     owners = Owner.objects.all()
     context = {'owners':owners}
     return render(request,'boat_census/owners.html',context)
+def enumerators(request):
+    #For viewing the owners
+    enumerators = Enumerator.objects.all()
+    context = {'enumerators':enumerators}
+    return render(request,'boat_census/enumerators.html',context)
 
 def add_owner(request):
     #Enable users to add owners
@@ -28,6 +33,19 @@ def add_owner(request):
             return HttpResponseRedirect(reverse('boat_census:owners'))
     context = {'form':form}
     return render(request,'boat_census/add_owner.html',context)
+def add_enumerator(request):
+    #Enable users to add enumerators
+    if request.method != 'POST':
+        #Data has not been entered, present a new from
+        form = EnumeratorForm()
+    else:
+        #Data has been submitted
+        form = EnumeratorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('boat_census:enumerators'))
+    context = {'form':form}
+    return render(request,'boat_census/add_enumerator.html',context)
 
 def districts(request):
     #Show districts in the Database
