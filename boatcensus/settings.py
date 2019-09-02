@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #My Apps
     'boat_census',
     'users',
+    
     #Third Party Apps
     'bootstrap3',
     'widget_tweaks',
