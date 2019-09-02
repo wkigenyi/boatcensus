@@ -34,8 +34,17 @@
 
 {% endblock %}
 {% block sidebar %}
-<div class="section">
-        <a href="{% url 'users:logout' %}" class="btn btn-lg btn-success btn-block">Register</a>
-</div>
-{% endblock %}
+    <p></p>
+        <div class="section actions">
+            <a href="{% url 'users:logout' %}" class="btn btn-lg btn-success btn-block">Register</a>
+        </div>
+        <div class="section about">
+            <div class="well well-lg">
+                <p>
+                    The boat census is a tool for collecting information about water vessels that are operating on the lakes of Uganda
+                </p>
+            </div>
+        </div>
+        
+{% endblock sidebar %}
 

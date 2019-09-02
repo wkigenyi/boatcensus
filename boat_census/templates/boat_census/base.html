@@ -79,41 +79,30 @@
 
                 </div>
                 <div id="sidebar" class="col-sm-3">
-                        {% block sidebar %}
-                        <p></p>
-                        <div class="section about">
-                            <div class="well well-lg">
-                                <p>
+                    {% block sidebar %}
+                    <p></p>
+                    <div class="section about">
+                        <div class="well well-lg">
+                            <p>
                                     The boat census is a tool for collecting information about water vessels that are operating on the lakes of Uganda
-                                </p>
-                            </div>
+                            </p>
                         </div>
+                    </div>
 
-                        {% if user.is_authenticated %}
-                        <div class="section actions">
-                            <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
-                        </div>
+                    {% if user.is_authenticated %}
+                    <div class="section actions">
+                        <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
+                    </div>
                                     
-                        {% else %}
-                        <div class="section">
-                            <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
-                        </div>
-                        {% endif %}
-                        
-                                               
-                        {% endblock sidebar %}
-
-                        
-                                
-                                
-
+                    {% else %}
+                    <div class="section">
+                        <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
+                    </div>
+                    {% endif %}
+                    {% endblock sidebar %}
                 </div>
                 
             </div>
         </div>
-            
-            
-                        
-
     </body>
 </html>
