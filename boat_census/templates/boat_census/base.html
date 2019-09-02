@@ -92,14 +92,22 @@
                                                
                         {% endblock sidebar %}
 
-                        <div class="section actions">
+                        
                                 {% if user.is_authenticated %}
-                                    <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
-                                {% else %}
-                                    <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
-                                    <a href="{% url 'users:logout' %}" class="btn btn-lg btn-success btn-block">Register</a>
-                                {% endif %}
+                                <div class="section actions">
+                                        <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
                                 </div>
+                                    
+                                {% else %}
+                                <div class="section">
+                                        <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
+                                </div>
+                                <div class="section">
+                                        <a href="{% url 'users:logout' %}" class="btn btn-lg btn-success btn-block">Register</a>
+                                </div>    
+                                    
+                                {% endif %}
+                                
 
                 </div>
                 
