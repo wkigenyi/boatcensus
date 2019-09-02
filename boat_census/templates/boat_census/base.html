@@ -88,23 +88,23 @@
                                 </p>
                             </div>
                         </div>
+
+                        {% if user.is_authenticated %}
+                        <div class="section actions">
+                            <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
+                        </div>
+                                    
+                        {% else %}
+                        <div class="section">
+                            <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
+                        </div>
+                        {% endif %}
                         
                                                
                         {% endblock sidebar %}
 
                         
-                                {% if user.is_authenticated %}
-                                <div class="section actions">
-                                        <a href="{% url 'users:logout' %}" class="btn btn-lg btn-primary btn-block">Log Out</a>
-                                </div>
-                                    
-                                {% else %}
-                                <div class="section">
-                                        <a href="{% url 'users:login' %}" class="btn btn-lg btn-primary btn-block">Login</a>
-                                </div>
-                                    
-                                    
-                                {% endif %}
+                                
                                 
 
                 </div>
