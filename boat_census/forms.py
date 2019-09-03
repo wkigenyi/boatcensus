@@ -52,7 +52,11 @@ class VesselForm(forms.ModelForm):
     class Meta:
         model = Vessel
         exclude = ['entrant','owner']
-        widgets = {'census_date':forms.TextInput(attrs={'type':'date'})}
+        widgets = {
+            'census_date': forms.TextInput(attrs={'type':'date'}),
+            'year_of_build': forms.TextInput(attrs={'type':'number','min':'1900','step':"1"}),
+            }
+
         
 class LandingSiteForm(forms.ModelForm):
     #Enable Addition Of Landing Sites
