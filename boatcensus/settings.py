@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gdpiu(7e-7dq@$-u8qr)c_f73@i(hh76f(0@43p_pn6y$jw(ua'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'boatcensus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,"boatcensus/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
